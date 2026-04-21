@@ -29,1233 +29,826 @@ library(broom.mixed)
 library(ggpubr)
 ```
 
-# A cognitive perspective on trust in science {style="text-align: center;"}
-
-**PhD thesis defense**  
-
-Jan Pfänder
+# Why mediation analysis might often be a bad idea {style="text-align: center;"}
 
 <br>
 
-*Supervised by* 
-
-Hugo Mercier & Kevin Arceneaux 
-
-<br>
-
-<span style="font-size: 70%;">September 3, 2025</span>
-
-
-::: {.absolute bottom="-200px" left="24%"}
-![](images/institut_jean_nicod.png){height="80px"}
+::: {.fragment}
+... or is at least a lot hard than we like to think
 :::
 
-::: {.absolute bottom="-200px" right="24%"}
-![](images/ens.png){height="80px"}
+---
+
+::: {.big-center}
+*Disclaimer*
+
+This talk is: 
+
+- heavy on the problems
+- light on solutions
+- given by **me**, i.e. someone without specific expertise in causal inference and statistics
+
+Check out the reading list for learning from the real experts.
 :::
 
+--- 
 
+## {background-image="images/adam_eve.jpg" background-size="100" background-position="center 50%"}
+
+
+::: {.absolute left="0%" top="50%" style="font-size:1.5em; padding: 0.5em 1em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px;"}
+what mediation analysis looks like to researchers
+:::
+
+---
+
+## {background-image="images/adam_eve.jpg" background-size="100%" background-position="center 20%"}
+
+::: {.absolute left="0%" top="50%" style="font-size:1.5em; padding: 0.5em 1em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px;"}
+... what it often turns out to be
+:::
 
 ---
 
 ## Overview
 
-::: {.columns style="font-size:1.2em;"}
+::: {.incremental}
+1. Mediation is tempting
 
-::: {.column width="30%"}
-[Chapter 1 & 2] 
+1. What does a (typical) mediation analysis look like?
 
-<br>
+1. The model is probably wrong
 
-[Chapters 3 & 4] 
+    - intuitive issues
+    - less intuitive issues
 
-<br>
+1. How **not** to defend your mediation model
 
-[Chapter 5 & 6] 
-
-<br>
-
-[Chapter 7]
-
-<br>
-
-[Chapter 8] 
-:::
-
-::: {.column width="70%"}
-Summary / Introduction 
-
-<br>
-
-Cognitive mechanisms to explain trust in science
-
-<br>
-
-Predictions of these mechanisms
-
-<br>
-
-Misinformation 
-
-<br>
-
-Conclusion 
-:::
-
+1. What now? 
 :::
 
 ---
 
 ::: {.big-center}
-Trust in science matters...
+As researchers, we want to understand mechanisms. 
 :::
 
 ---
 
-::: {.columns}
+## {background-image="images/scurvy.jpg" background-size="100%" background-position="center 50%"}
 
-::: {.column}
-![](images/ipcc.png)
+::: {.absolute right="-15%" bottom="0%" style="font-size:0.5em; padding: 0.3em 0.8em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px; text-align: right;"}
+James Lind's treating scurvy with citrus fruit. 
+
+*Source: https://www.bbc.com/news/uk-england-37320399 *
 :::
 
-::: {.column}
-![](images/vaccine.jpg)
+. . .
+
+::: {style="position: absolute; top: 50%; left: 0; right: 0; margin: auto; width: fit-content; font-size:1.5em; padding: 0.5em 1em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px;"}
+eating lemons → cure scurvy
+:::
+---
+
+## {background-image="images/scurvy.jpg" background-size="100%" background-position="center 50%"}
+
+::: {.absolute right="-15%" bottom="0%" style="font-size:0.5em; padding: 0.3em 0.8em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px; text-align: right;"}
+James Lind's treating scurvy with citrus fruit. 
+
+*Source: https://www.bbc.com/news/uk-england-37320399 *
 :::
 
+::: {style="position: absolute; top: 50%; left: 0; right: 0; margin: auto; width: fit-content; font-size:1.5em; padding: 0.5em 1em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px;"}
+But how?
 :::
 
-::: {.notes}
-A lack of trust in science entails social or individual cost.
+---
 
-For example, if we don't trust climate scientists, this will have (and to some extent already has) disastrous consequences.
+## {background-image="images/scurvy.jpg" background-size="100%" background-position="center 50%"}
 
-Similarly, not trusting vaccines puts both ourselves and others at serious health risk.
+::: {.absolute right="-15%" bottom="0%" style="font-size:0.5em; padding: 0.3em 0.8em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px; text-align: right;"}
+James Lind's treating scurvy with citrus fruit. 
+
+*Source: https://www.bbc.com/news/uk-england-37320399 *
+:::
+
+::: {style="position: absolute; top: 50%; left: 0; right: 0; margin: auto; width: fit-content; font-size:1.5em; padding: 0.5em 1em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px;"}
+eating lemons → absorb vitamine c → cure scurvy
 :::
 
 ---
 
 ::: {.big-center}
-Researchers are typically interested in why people do *NOT* trust science.
+As a researchers, we constantly think about mediation.
+
+
+::: {.fragment}
+"How does X affect Y?" and "Why does X affect Y?" are questions about mediation. 
+:::
+
 :::
 
 ---
 
-## A lack of trust in science is due to...
+## Overview
 
-::: {style="font-size: 1.3em"}
+1. Mediation is tempting
 
-::: {.fragment}
-- a **knowledge deficit**, <span style="font-size: 50%;">[@sturgisScienceSocietyReEvaluating2004]</span> 
+::: {.fragment .highlight-blue fragment-index=1}
+2. What does a (typical) mediation analysis look like?
 :::
 
-::: {.fragment}
-- certain **psychological traits**, such as Social Dominance Orientation, conspiratory thinking, hierarchical worldviews, <span style="font-size: 50%;">[@hornseyAttitudeRootsJiu2017a;@rutjensConspiracyBeliefsScience2022]</span>
-:::
+3. The model is probably wrong
 
-::: {.fragment}
-- **motivated reasoning**, i.e. selecting and interpreting information to match one’s existing beliefs or behaviors, <span style="font-size: 50%;">[@lewandowskyMotivatedRejectionScience2016; @lewandowskyWorldviewmotivatedRejectionScience2021]</span>
-:::
+    - intuitive issues
+    - less intuitive issues
 
-::: {.fragment}
-- **misinformation**, <span style="font-size: 50%;">[@nationalacademiesofsciencesUnderstandingAddressingMisinformation2024; @scheufeleScienceAudiencesMisinformation2019; @druckmanThreatsSciencePoliticization2022]</span>
-:::
+4. How **not** to defend your mediation model
 
-::: {.fragment}
-- or due to people feeling **alienated** from modern and increasingly complex institutions. <span style="font-size: 50%;">[@gauchatCulturalAuthorityScience2011]</span> 
-:::
-
-:::
+5. What now? 
 
 ---
 
 ::: {.big-center}
+"Do regular tests improve math grades for students?"
 
-But:
-
-::: {.fragment}
-Across the globe, most people *do* tend to trust science. 
-:::
-
-:::
-
----
-
-![[@colognaTrustScientistsTheir2025]](images/cologna_manylabs.png){fig-align="center"}
-
-::: {.absolute left="27%" bottom="3.5%" style="font-size:1.5em; color:black; z-index:9999;"}
-Low (1)
-:::
-
-::: {.absolute right="25%" bottom="3.5%" style="font-size:1.5em; color:black; z-index:9999;"}
-High (5)
-:::
-
-::: {.notes}
-A recent manylabs study that we contributed to measured trust in scientists across 68 countries. This graph shows the main result...
-:::
-
-# The puzzle of trust in science
-
----
-
-## {.big-center}
-
-The literature focuses mostly on why people do not trust science.
-
-. . .
-
-Elevated public trust in science is considered the rational default state. 
-
----
-
-## {.big-center}
-
-Only the "knowledge deficit" view (implicitly) offers an explanation. 
-
-. . .
-
-It suggests that if trust in science is rational, it should be caused mostly by knowledge and understanding of science.
-
-. . .
-
-But...
-
-:::{.notes}
-default state--it's the deviations that require an explanation
-:::
-
----
-
-::::: {.columns style='display: flex !important; height: 90%;'}
-
-::: {.column width="20%" style='display: flex; justify-content: center; align-items: center;'}
-
-:::{.big-center}
-People don't know much about science
-:::
-
-:::
-
-::: {.column width="80%"}
-
-![[@nationalacademiesofsciencesengineeringandmedicineScienceLiteracyConcepts2016]](images/science_literacy.jpg)
-:::
-
-::::
-
----
-
-::::: {.columns style='display: flex !important; height: 90%;'}
-
-::: {.column width="20%" style='display: flex; justify-content: center; align-items: center;'}
-
-:::{.big-center}
-
-For example...
 
 ::: {.fragment}
-In 2014, only 51 % of U.S. adults (correctly) stated that electrons are smaller than atoms.
+We can run an RCT and get the causal effect
 :::
 
 ::: {.fragment}
-(46% in the European Union in 2005)
+Suppose it works
 :::
-
-::: {.fragment}
-(28% in Japan in 2011)
-:::
-
-:::
-
-:::
-
-::: {.column width="80%"}
-
-![@nationalacademiesofsciencesengineeringandmedicineScienceLiteracyConcepts2016](images/science_literacy.jpg)
-:::
-
-::::
-
----
-
-:::{.big-center}
-
-In 2020, only 
-
-"60% of U.S. adults could correctly note that a control group can be useful in making sense of study results." <span style="font-size: 50%;">[@nationalscienceboardnationalsciencefoundationScienceTechnologyPublic2024, p.24]</span> 
 
 :::
 
 --- 
 
-:::: {.big-center}
+::: {.big-center}
+Next, we might want to ask: "Why?"/"How?"
 
-Science knowledge is only weakly correlated with attitudes towards science in general. <span style="font-size: 50%;">[@allumScienceKnowledgeAttitudes2008]</span>   
 
 ::: {.fragment}
-National average PISA scores are not correlated with national average trust in scientists. <span style="font-size: 50%;">[@colognaTrustScientistsTheir2025]</span>  
-:::
-
-::::
-
----
-
-:::: {.big-center}
-
-Is public trust in science irrational?
-
-::: {.fragment fragment-index=1}
-If not because of knowledge and understanding, why do people trust science?
-:::
-
-::: {.notes}
-If we can answer this, this will likely also help us understand how to foster public trust in science
-:::
-
-::::
-
-
-# The rational impression account of trust in science
-
----
-
-::: {.big-center}
-A cognitive model of how people come to trust science
-:::
-
----
-
-## Two basic cognitive mechanisms
-
-::: {.fragment fragment-index=1 style="font-size:1.5em;"}
-::: {.fragment .highlight-blue fragment-index=6}
-1. People infer competence from possessing rare knowledge. [But while the impression of competence persists, people forget the specific knowledge. [Chapter 3]]{.fragment fragment-index="2"}
-:::
-:::
-
-::: {.fragment fragment-index=3 .fade-in-then-out style="font-size:30px;"}
-*For example, if a colleague at work fixes our computer, we might remember that they are competent, but not exactly how they fixed it.*
-:::
-
-::: {.fragment fragment-index=4 style="font-size:1.5em;"}
-2. People infer accuracy from consensus. [Chapter 4]
-:::
-
-::: {.fragment fragment-index=5 .fade-in-then-out style="font-size:30px;"}
-*For example, if we have to pick between two restaurants we don't know, but everyone we ask says that Restaurant A is better, we'll believe it is indeed better*
-:::
-
-::: {.notes}
-But: rare knowledge is only impressive if true...
-
-In the example with our colleague, we can evaluate that they are right, because we can see with our own eyes that our computer works after their fix. 
-
-But in the case of science, we cannot observe or interpret most of the results ourselves.
-
-So how do we know that scientists are right? 
-:::
-
-
-# [Chapter 3] <br> <br> Trusting but forgetting impressive science 
-
-::: {.absolute right="-10%" bottom="-10%" style="font-size:1em; z-index:9999; width:300px; white-space:normal;"}
-[@pfanderTrustingForgettingImpressive2025]
-:::
-
-::: {.absolute top="-5%" right="10%" .fragment .fade-in-then-out fragment-index=1}
-![Sophie de Rouilhan](images/sophie.jpg){height="150px"}
-:::
-
-::: {.absolute top="-5%" right="-10%" .fragment .fade-in-then-out fragment-index=1}
-![Hugo Mercier](images/hugo.jpg){height="150px"}
-:::
-
----
-
-::: {.big-center}
-Two Studies
-
-696 participants from the UK 
-:::
-
----
-
-## Study 1
-
-::::: {.columns style='display: flex !important; height: 90%;'}
-
-::: {.column .center-right width="50%" style="font-size:1em;"}
-
-Version A [(*less* impressive)]{.fragment fragment-index="3"}
-
-::: {.fragment fragment-index="1"}
-[...]
-
->*"Sometimes entomologists study insects by observing them in the wild, sometimes they conduct controlled experiments in laboratories, to see for example how different environmental factors change the behavior of insects, or to track exactly the same insects over a longer period of time."*
-
-[...]
-:::
-
-:::
-
-::: {.column .center-right width="50%" style="font-size:1em;"}
-
-
-Version B [(*more* impressive)]{.fragment fragment-index="3"}
-
-::: {.fragment fragment-index="2"}
-[...]
-
-> *"Entomologists interested in how flies’ visual perception works have used special displays to present images for much less than the blink of an eye, electrodes to record how individual cells in the flies’ brain react, and ultra-precise electron microscopy to examine their eyes."*
-
-[...]
-:::
-
-:::
-
-::::
-
---- 
-
-## {.big-center}
-
-
-Participants perceived the impressive texts as more impressive. 
-
-. . .
-
-This had an impact on their trust in the scientific discipline and their perceptions of the scientists' competence.
-
----
-
-![](images/impressiveness_trust.png)
-
-:::{.notes}
-Participants who read the more impressive texts reported larger increases in trust in the discipline (e.g., entomology)...
-
-Scale: “Having read this text, would you agree that you trust the discipline of [archaeology/ entomology] more than you did before?” 
-
-[1 - Strongly disagree, 2 - Disagree, 3- Neither agree nor disagree, 4 - Agree, 5 - Strongly agree].
-:::
-
----
-
-![](images/impressiveness_competence.png)
-
-:::{.notes}
-Participants who read the more impressive texts also reported perceiving the scientists (e.g., entomologists) as more competent afterwords
-
-Scale: “Would you agree that reading this text has made you think of [archaeologists/entomologists] as more competent than you thought before?” 
-[1 - Strongly disagree, 2 - Disagree, 3 - Neither agree nor disagree, 4 - Agree, 5 - Strongly agree]
-:::
-
----
-
-## Study 2
-
-::: {.big-center}
-
-::: {.fragment}
-Participants read the impressive version of the texts from Study 1.
+We might have an idea: "It might be because regular tests make students study more"
 :::
 
 ::: {.fragment}
-Again, participants reported increased perceptions of trust and competence.
+That's a mediation question
 :::
 
 :::
 
 ---
 
-::: {.big-center}
-Then, right after, we asked participants to recall what they had read (open-ended question).
+## The 3 steps of mediation
 
-::: {.fragment}
-Result: not much.
+:::: {.columns}
+
+::: {.column width="50%"}
+
+**Step 1** — Total effect of X on Y
+
+$$Y = \alpha + cX$$
+
+<br>
+
+**Step 2** — Effect of X on mediator M
+
+$$M = \alpha + aX$$
+
+<br>
+
+**Step 3** — Effect of X on Y, controlling for M
+
+$$Y = \alpha + c'X + bM$$
+
+<br>
+
+Mediation = $c - c'$
+
 :::
-:::
 
----
+::: {.column width="50%"}
 
-::: {.columns style='display: flex !important; height: 100%;'}
+```{=html}
+<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; margin-top: -20px;">
 
-::: {.column width="40%"}
+  <!-- Boxes -->
+  <rect x="20" y="55" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="70" y="85" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
 
-```{r knowledge-evaluation-grid, echo=FALSE}
-#| label: tbl-knowledge-evaluation-grid
-#| tbl-cap: "Recall evaluation grid"
+  <rect x="280" y="55" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="330" y="85" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">Y</text>
 
-## Create the data frame with consistent row numbers
-new_table <- data.frame(
-  Archaeology = linebreak(c(
-  "1. Archaeologists can determine whether someone was male or female from their bones.",
-  "2. Archaeologists can determine how old someone was from their bones.",
-  "3. Archaeologists can determine whether someone suffered from a range of diseases from their bones.",
-  "4. Archaeologists can determine at what age someone stopped drinking their mother’s milk, based on the composition of their teeth.",
-  "5. The nerve controlling breathing is larger in humans than in apes. The canal containing that nerve is also larger in humans and Neanderthals than in apes.",
-  "6. The fact that the nerve controlling breathing is larger in humans is possibly due to the need for fine-grained control of breathing to speak.",
-  "7. Archaeologists determined that most Neanderthals were right-handed, based on analysis of Neanderthals’ tools.",
-  "8. Handedness is thought to be related to the evolution of language. This suggests that Neanderthals likely possessed a form of language."
-))
-) 
+  <!-- Path c: X -> Y (total) -->
+  <line x1="120" y1="80" x2="280" y2="80" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p1)"/>
+  <text x="200" y="72" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="Calibri">c</text>
 
-table_output <- new_table %>%
-    gt() %>%
-    cols_label(
-      Archaeology = "Archaeology"
-    ) %>%
-    tab_source_note(md("For each knowledge element, participants could score a maximum of two points."))
+  <defs>
+    <marker id="arrow-teal-p1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+  </defs>
 
-table_output
+</svg>
+```
+
+```{=html}
+<svg viewBox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; margin-top: -20px;">
+
+  <!-- Boxes -->
+  <rect x="20" y="55" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="70" y="85" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+
+  <rect x="150" y="55" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="200" y="85" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M</text>
+
+  <!-- Path a: X -> M -->
+  <line x1="120" y1="80" x2="150" y2="80" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p2)"/>
+  <text x="135" y="72" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="Calibri">a</text>
+
+  <defs>
+    <marker id="arrow-teal-p2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+  </defs>
+
+</svg>
+```
+
+```{=html}
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; margin-top: -20px;">
+
+  <!-- Boxes -->
+  <rect x="20" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="70" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+
+  <!-- M with red dashed border -->
+  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="200" y="50" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M</text>
+
+  <rect x="280" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="330" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">Y</text>
+
+  <!-- Path a: X -> M -->
+  <line x1="120" y1="125" x2="150" y2="60" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p3)"/>
+  <text x="118" y="85" fill="#14B8A6" font-size="14" font-family="Calibri">a</text>
+
+  <!-- Path b: M -> Y -->
+  <line x1="250" y1="60" x2="280" y2="125" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p3)"/>
+  <text x="278" y="85" fill="#14B8A6" font-size="14" font-family="Calibri">b</text>
+
+  <!-- Path c': X -> Y (direct) -->
+  <line x1="120" y1="145" x2="280" y2="145" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-p3)"/>
+  <text x="200" y="138" text-anchor="middle" fill="#EF4444" font-size="14" font-family="Calibri">c'</text>
+
+  <defs>
+    <marker id="arrow-teal-p3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+    <marker id="arrow-red-p3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#EF4444"/>
+    </marker>
+  </defs>
+
+</svg>
 ```
 
 :::
 
-::: {.column width="70%" style='display: flex; justify-content: center; align-items: center;'}
+:::
+
+---
+
+## Overview
+
+1. Mediation is tempting
+
+2. What does a (typical) mediation analysis look like?
+
+::: {.fragment .highlight-blue fragment-index=1}
+3. The model is probably wrong
+
+    - intuitive issues
+    - less intuitive issues
+:::
+
+4. How **not** to defend your mediation model
+
+5. What now? 
+
+---
+
+## The model is probably wrong
+
+### Intuitive issues
+
+---
+
+## Reverse Causality
+
+```{=html}
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:70%; height:auto;">
+
+  <rect x="20" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="70" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+
+  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="200" y="50" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M</text>
+
+  <rect x="280" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="330" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">Y</text>
+
+  <!-- X -> M -->
+  <line x1="120" y1="125" x2="150" y2="60" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-rc)"/>
+
+  <!-- X -> Y -->
+  <line x1="120" y1="145" x2="280" y2="145" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-rc)"/>
+
+  <!-- Y -> M (reverse, red dotted) -->
+  <line x1="300" y1="120" x2="250" y2="65" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-rc)"/>
+
+  <defs>
+    <marker id="arrow-teal-rc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+    <marker id="arrow-red-rc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#EF4444"/>
+    </marker>
+  </defs>
+
+</svg>
+```
+
+---
+
+##  Omitted other Mediators
+
+```{=html}
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:70%; height:auto;">
+
+  <rect x="20" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="70" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+
+  <!-- M1 (included) -->
+  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="200" y="50" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M₁</text>
+
+  <!-- M2 (omitted) -->
+  <rect x="150" y="210" width="100" height="50" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="200" y="240" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M₂</text>
+  <text x="200" y="275" text-anchor="middle" fill="#EF4444" font-size="11" font-family="Calibri">(omitted)</text>
+
+  <rect x="280" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="330" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">Y</text>
+
+  <!-- X -> M1 -->
+  <line x1="120" y1="125" x2="150" y2="60" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-om)"/>
+  <text x="118" y="85" fill="#14B8A6" font-size="14" font-family="Calibri">a₁</text>
+
+  <!-- M1 -> Y -->
+  <line x1="250" y1="60" x2="280" y2="125" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-om)"/>
+  <text x="278" y="85" fill="#14B8A6" font-size="14" font-family="Calibri">b₁</text>
+
+  <!-- X -> M2 -->
+  <line x1="120" y1="155" x2="150" y2="220" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-om)"/>
+  <text x="112" y="200" fill="#EF4444" font-size="14" font-family="Calibri">a₂</text>
+
+  <!-- M2 -> Y -->
+  <line x1="250" y1="225" x2="280" y2="165" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-om)"/>
+  <text x="278" y="210" fill="#EF4444" font-size="14" font-family="Calibri">b₂</text>
+
+  <!-- M1 <-> M2 correlation -->
+  <line x1="200" y1="70" x2="200" y2="210" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="208" y="148" fill="#F59E0B" font-size="12" font-family="Calibri">r ≠ 0</text>
+
+  <defs>
+    <marker id="arrow-teal-om" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+    <marker id="arrow-red-om" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#EF4444"/>
+    </marker>
+  </defs>
+
+</svg>
+```
+
+---
+
+## The model is probably wrong
+
+### Less intuitive issues
+
+---
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+Simple mediation model
+
+```{=html}
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
+
+  <rect x="20" y="120" width="130" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="85" y="143" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">X</text>
+  <text x="85" y="160" text-anchor="middle" fill="white" font-size="13" font-family="Calibri">Regular tests</text>
+
+  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="200" y="43" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">M</text>
+  <text x="200" y="60" text-anchor="middle" fill="white" font-size="13" font-family="Calibri">Study time</text>
+
+  <rect x="280" y="120" width="110" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="335" y="143" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">Y</text>
+  <text x="335" y="160" text-anchor="middle" fill="white" font-size="13" font-family="Calibri">Grades</text>
+
+  <!-- X -> M -->
+  <line x1="150" y1="130" x2="165" y2="65" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-ex)"/>
+
+  <!-- M -> Y -->
+  <line x1="250" y1="55" x2="282" y2="128" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-ex)"/>
+
+  <!-- X -> Y (direct, dashed red) -->
+  <line x1="150" y1="148" x2="280" y2="148" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-ex)"/>
+
+  <defs>
+    <marker id="arrow-teal-ex" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+    <marker id="#arrow-teal-ex" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+  </defs>
+
+</svg>
+```
+:::
+
+::: {.column width="50%"}
 
 ::: {.fragment}
+A more complex model
 
-![](images/recall.png)
+```{=html}
+<svg viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto;">
 
-:::
-:::
+  <!-- X -->
+  <rect x="10" y="120" width="110" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="65" y="140" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">X</text>
+  <text x="65" y="158" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Quizzes</text>
 
-:::
+  <!-- M (elevated, all green) -->
+  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="200" y="40" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">M</text>
+  <text x="200" y="58" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Study hours</text>
 
-::: {.notes}
-We built a grading grid and used ChatGPT (cross-validated with human evaluations) to assign scores. 
+  <!-- Y -->
+  <rect x="290" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="340" y="140" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">Y</text>
+  <text x="340" y="158" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Exam grade</text>
 
-mean = 32%, median= 29%
-:::
+  <!-- U (below, all green) -->
+  <rect x="150" y="260" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="200" y="280" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">U</text>
+  <text x="200" y="298" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Love of math</text>
 
----
+  <!-- X -> M -->
+  <line x1="110" y1="125" x2="152" y2="62" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-plain)"/>
 
-## Conclusion
+  <!-- M -> Y -->
+  <line x1="250" y1="55" x2="292" y2="125" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-plain)"/>
 
-::: {.big-center}
+  <!-- X -> Y -->
+  <line x1="120" y1="145" x2="290" y2="145" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-plain)"/>
 
-::: {.fragment}
-When people read impressive scientific information, their trust in the scientific discipline increases.
-:::
+  <!-- U -> M -->
+  <line x1="175" y1="260" x2="175" y2="70" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-plain)"/>
 
-::: {.fragment}
-They then immediately forget most of the content. 
-:::
+  <!-- U -> Y -->
+  <line x1="225" y1="260" x2="325" y2="170" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-plain)"/>
 
-:::
+  <defs>
+    <marker id="arrow-teal-plain" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+  </defs>
 
-::: {.notes}
-Not just any content, but content that likely was important in generating the impression.
-
-Maybe the knowledge that participants forget is not relevant for the impression. 
-
-Two arguments against this: 
-
-1. We also asked participants after the task to pick impressive information bits. Even among the subset of impressive bits (specific to each participant), they still forgot content 
-
-2. In a validation study, we gave the recalled text to another set of participants. They rated them as less impressive than the original text. 
-
-(if participants had retained all impressive information, and only strip down all the unimportant stuff, we would have predicted no difference). 
-:::
-
----
-
-## Two basic cognitive mechanisms
-
-::: {style="font-size:1.5em;"}
-1. People infer competence from possessing rare knowledge. But while the impression of competence persists, people forget the specific knowledge [Chapter 3]
-:::
-
-::: {.fragment fragment-index=1 style="font-size:1.5em;"}
-::: {.fragment .highlight-blue fragment-index=2}
-2. People infer accuracy from consensus. [Chapter 4]
-:::
-:::
-
-
-
-# [Chapter 4] <br> <br> How wise is the crowd: <br> Can we infer people are accurate and competent merely because they agree with each other?
-
-::: {.absolute right="-3%" bottom="-3%" style="font-size:1em; z-index:9999; width:300px; white-space:normal;"}
-[@pfanderHowWiseCrowd2025]
-:::
-
-::: {.absolute top="-5%" right="10%" .fragment .fade-in-then-out fragment-index=1}
-![Benoît de Courson](images/benoit.jpg){height="150px"}
-:::
-
-::: {.absolute top="-5%" right="-10%" .fragment .fade-in-then-out fragment-index=1}
-![Hugo Mercier](images/hugo.jpg){height="150px"}
-:::
-
----
-
-::::: {.columns style='display: flex !important; height: 90%;'}
-
-::: {.column width="40%" style='display: flex; justify-content: center; align-items: center; font-size:1.5em;'}
-
-Imagine that you live in ancient Egypt, and a fellow called Eratostenes claims the circumference of the earth is 252'000 stades (approximately 40'000 kilometers).
-
-:::
-
-::: {.column .center-right width="60%" style='display: flex; justify-content: center; align-items: center; font-size:1em;'}
-
-![](images/eratostenes.jpg)
-:::
-
-::::
-
----
-
-::::: {.columns style='display: flex !important; height: 90%;'}
-
-::: {.column width="40%" style='display: flex; flex-direction: column; justify-content: center; align-items: center; font-size:1.5em;'}
-
-You know nothing about this man, the circumference of the Earth, or how one could measure such a thing. 
-
-::: {.fragment}
-As a result, might (mis)take Eratostenes for a pretentious loon.
+</svg>
+```
 :::
 
 :::
 
-::: {.column .center-right width="60%" style='display: flex; justify-content: center; align-items: center; font-size:1em;'}
-
-![](images/eratostenes.jpg)
-:::
-
-::::
-
----
-
-::::: {.columns style='display: flex !important; height: 90%;'}
-
-::: {.column width="40%" style='display: flex; flex-direction: column; justify-content: center; align-items: center; font-size:1.5em;'}
-
-But what if other scholars had arrived at very similar measurements, independently of Eratosthenes? 
-
-::: {.fragment}
-Or even if they had carefully checked his measurement, with a critical eye? 
-:::
-
-:::
-
-::: {.column .center-right width="60%" style='display: flex; justify-content: center; align-items: center; font-size:1em;'}
-
-![](images/eratostenes.jpg)
-:::
-
-::::
-
-::: {.notes}
-Wouldn't that give you enough ground to believe not only that the estimates might be correct, but also that Eratosthenes and his fellow scholars must be quite bright, to be able to achieve such a feat as measuring the Earth?
 :::
 
 ---
 
 ::: {.big-center}
-In simulations, we show that this inference--from agreement to both accuracy and competence--is, in fact, rational. 
-:::
-
-::: {.notes}
-The literature on wisdom of crowds has established that it is justified to infer accuracy from consensus...*assuming a certain competence of the individuals*. 
-
-In simulations, we show that this competence assumption is not needed.
-
-In fact, it is justified to infer both accuracy *and* competence from convergence, in many scenarios.
-
-The most important assumption underlying these simulations was that informants are not systematically biased, i.e. all of them share a tendency to be wrong.
+Now, what happens if we estimate our simple mediation model given reality is the more complex causal mdoel?
 :::
 
 ---
 
-::: {.big-center}
-6 Experiments
+## Who will get a better grade? 
 
-1197 participants from the UK 
-:::
+![](images/datacolada_example.png)
 
----
-
-## {.big-center}
-
-We showed participants the results of several fictional scenarios, where individuals had made estimates (e.g. players in a game). 
-
-. . .
-
-Participants did not have any information on what the game was about or who the players were.
+<div style="position:absolute; top:10%; right:0%; width:50%; height:80%; background:var(--r-background-color);"></div>
 
 ---
 
-## {.big-center}
+## Who loves math more? 
 
-Convergent
-
-![](images/consensus_convergent_example.png)
-
-. . .
-
-Divergent
-
-![](images/consensus_divergent_example.png)
+![](images/datacolada_example.png)
 
 ---
 
-::: {.big-center}
-Participants behaved as what was predicted to be rational by our simulations: 
+## Now, who will get a better grade? 
 
-::: {.fragment}
-They rated more convergent groups as more likely to be accurate and to be competent.
-:::
-
-:::
-
-# Predictions of the rational impression account 
+![](images/datacolada_example.png)
 
 ---
 
-::: {.big-center}
+:::: {.columns}
 
-::: {.fragment .highlight-blue fragment-index=2}
-[Chapter 5] People should trust science more if they perceive it as more consensual and precise.
-:::
+::: {.column width="30%"}
 
-::: {.fragment fragment-index=1}
-[Chapter 6] People who have been exposed to science (mostly during school) should trust most of science. 
-:::
-
-:::
-
-# [Chapter 5] <br> <br> The French trust more the sciences they perceive as precise and consensual
-
-::: {.absolute right="-10%" bottom="-10%" style="font-size:1em; z-index:9999; width:300px; white-space:normal;"}
-[@pfanderFrenchTrustMore2025]
-:::
-
-::: {.absolute top="-5%" right="-10%" .fragment .fade-in-then-out fragment-index=1}
-![Hugo Mercier](images/hugo.jpg){height="150px"}
-:::
-
----
-
-::: {.big-center}
-A survey
-
-1012 participants (representative sample) from France
-:::
-
----
-
-## {.big-center}
-
-We asked participants how consensual and precise they view
-
-. . .
-
-- science in general
-
-. . .
-
-- different scientific disciplines in particular. 
-
-. . .
-
-We also asked them about their trust. 
-
----
-
-![](images/france_between.png)
-
-::: {.fragment .fade-out}
-<div style="position:absolute; top:0%; left:45%; width:50%; height:100%; background:#191919;"></div>
-:::
-
----
-
-![](images/france_within.png)
-
----
-
-::: {.big-center}
-
-**Predictions of the rational impression account:** 
+$$Y = \alpha + c'X + bM$$
 
 <br>
 
-[Chapter 5] People should trust science more if they perceive it as more consensual and precise.
+[**Conditioning on M**]{style="color: #F59E0B;"}  
+creates a spurious negative correlation between X and U within strata of M
+
+<br>
+
+[**c'** underestimated]{style="color: #EF4444;"}  
+— OLS sees quiz assignment as a negative predictor of grades once M is held fixed
+
+:::
+
+::: {.column width="70%"}
+
+```{=html}
+<div style="display: flex; justify-content: center;">
+<svg viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg" style="width:90%; height:auto;">
+
+  <!-- X -->
+  <rect x="10" y="120" width="110" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="65" y="140" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">X</text>
+  <text x="65" y="158" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Quizzes</text>
+
+  <!-- M (elevated, yellow dotted box) -->
+  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="200" y="40" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">M</text>
+  <text x="200" y="58" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Study hours</text>
+  <text x="255" y="35" fill="#F59E0B" font-size="11" font-family="Calibri">controlled for</text>
+
+  <!-- Y -->
+  <rect x="290" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="340" y="140" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">Y</text>
+  <text x="340" y="158" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Exam grade</text>
+
+  <!-- U (below) -->
+  <rect x="150" y="260" width="100" height="50" rx="6" fill="#1E293B" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="200" y="280" text-anchor="middle" fill="#F59E0B" font-size="12" font-family="Calibri">U</text>
+  <text x="200" y="298" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Love of math</text>
+
+  <!-- X -> M -->
+  <line x1="110" y1="125" x2="152" y2="62" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-sc)"/>
+
+  <!-- M -> Y -->
+  <line x1="250" y1="55" x2="292" y2="125" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-sc)"/>
+
+  <!-- U -> M -->
+  <line x1="175" y1="260" x2="175" y2="70" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrow-gold-sc)"/>
+
+  <!-- U -> Y -->
+  <line x1="225" y1="260" x2="325" y2="170" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrow-gold-sc)"/>
+
+  <!-- c' (direct, dashed red) -->
+  <line x1="120" y1="145" x2="290" y2="145" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-sc)"/>
+  <text x="205" y="138" text-anchor="middle" fill="#EF4444" font-size="11" font-family="Calibri">c' biased (underestimated)</text>
+
+  <!-- spurious association: roundish dotted line between U and X, no arrows -->
+  <path d="M 65 170 Q 20 260 150 285" fill="none" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="30" y="240" fill="#EF4444" font-size="10" font-family="Calibri" transform="rotate(-55, 50, 230)">spurious assoc. (−)</text>
+
+  <defs>
+    <marker id="arrow-teal-sc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+    <marker id="arrow-red-sc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#EF4444"/>
+    </marker>
+    <marker id="arrow-gold-sc" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#F59E0B"/>
+    </marker>
+  </defs>
+
+</svg>
+</div>
+```
+
+:::
+
+::::
+
+---
+
+::: {.big-center}
+If this was confusing, here is another way to think about it...
+:::
+
+---
+
+:::: {.columns}
+
+::: {.column width="30%"}
+
+$$Y = \alpha + c'X + bM$$
+
+<br>
+
+[**b** overestimated]{style="color: #F59E0B;"}  
+— $b$ (M→Y) picks up the effect of U
+
+<br>
+
+[**c'** underestimated]{style="color: #EF4444;"}  
+— OLS compensates for the over-prediction of $b$ by shrinking $c'$
+
+:::
+
+::: {.column width="70%"}
+
+```{=html}
+<div style="display: flex; justify-content: center;">
+<svg viewBox="0 0 400 350" xmlns="http://www.w3.org/2000/svg" style="width:90%; height:auto;">
+
+  <!-- X -->
+  <rect x="10" y="120" width="110" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="65" y="140" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">X</text>
+  <text x="65" y="158" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Quizzes</text>
+
+  <!-- M (elevated) -->
+  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="200" y="40" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">M</text>
+  <text x="200" y="58" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Study hours</text>
+
+  <!-- Y -->
+  <rect x="290" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"/>
+  <text x="340" y="140" text-anchor="middle" fill="#14B8A6" font-size="12" font-family="Calibri">Y</text>
+  <text x="340" y="158" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Exam grade</text>
+
+  <!-- U (below, yellow) -->
+  <rect x="150" y="260" width="100" height="50" rx="6" fill="#1E293B" stroke="#F59E0B" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="200" y="280" text-anchor="middle" fill="#F59E0B" font-size="12" font-family="Calibri">U</text>
+  <text x="200" y="298" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Love of math</text>
+
+  <!-- X -> M -->
+  <line x1="110" y1="125" x2="152" y2="62" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-fin)"/>
+
+  <!-- M -> Y (yellow) -->
+  <line x1="250" y1="55" x2="292" y2="125" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrow-gold-fin)"/>
+  <text x="295" y="85" fill="#F59E0B" font-size="11" font-family="Calibri">includes</text>
+  <text x="295" y="98" fill="#F59E0B" font-size="11" font-family="Calibri">effect of U</text>
+  <text x="295" y="111" fill="#F59E0B" font-size="11" font-family="Calibri">(overestimated)</text>
+
+  <!-- c' (direct, dashed red) -->
+  <line x1="120" y1="145" x2="290" y2="145" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-fin)"/>
+  <text x="205" y="138" text-anchor="middle" fill="#EF4444" font-size="11" font-family="Calibri">c' (underestimated)</text>
+
+  <!-- U -> M (yellow) -->
+  <line x1="175" y1="260" x2="175" y2="70" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrow-gold-fin)"/>
+
+  <!-- U -> Y (yellow) -->
+  <line x1="225" y1="260" x2="325" y2="170" stroke="#F59E0B" stroke-width="2" marker-end="url(#arrow-gold-fin)"/>
+
+  <defs>
+    <marker id="arrow-teal-fin" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#14B8A6"/>
+    </marker>
+    <marker id="arrow-red-fin" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#EF4444"/>
+    </marker>
+    <marker id="arrow-gold-fin" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#F59E0B"/>
+    </marker>
+  </defs>
+
+</svg>
+</div>
+```
+
+:::
+
+::::
+
+---
+
+## Overview
+
+1. Mediation is tempting
+
+2. What does a (typical) mediation analysis look like?
+
+3. The model is probably wrong
+
+    - intuitive issues
+    - less intuitive issues
 
 ::: {.fragment .highlight-blue fragment-index=1}
-[Chapter 6] People who have been exposed to science (mostly during school) should trust most of science. 
+4. How **not** to defend your mediation model
 :::
 
-:::
-
-# [Chapter 6] <br> <br> Quasi-universal acceptance of basic science in the US
-
-::: {.absolute right="-10%" bottom="-10%" style="font-size:1em; z-index:9999; width:300px; white-space:normal;"}
-[@pfanderQuasiuniversalAcceptanceBasic2025]
-:::
-
-::: {.absolute top="-5%" right="10%" .fragment .fade-in-then-out fragment-index=1}
-![Lou Kerzreho](images/lou.jpg){height="150px"}
-:::
-
-::: {.absolute top="-5%" right="-10%" .fragment .fade-in-then-out fragment-index=1}
-![Hugo Mercier](images/hugo.jpg){height="150px"}
-:::
+5. What now? 
 
 ---
 
-::: {.big-center}
-4 Studies (two on vaccine-skeptics)
+## How **not** to defend your mediation model
 
-782 participants from the United States
-:::
+<br>
 
---- 
+"Even though I'm estimating a mediation, I never speak of causal effects."
 
-## {.big-center}
-
-Even if most people tend to trust science...
-
---- 
-
-:::{.big-center}
-Substantial minorities... 
-
-:::{.fragment}
-- say that they don't trust science in general, <span style="font-size: 50%;">[@wellcomeglobalmonitorWellcomeGlobalMonitor2018]</span>
-:::
-
-:::{.fragment}
-- or believe in conspiracy theories which reject the scientific consensus.
-:::
-
-:::{.fragment}
-::: {style="font-size:30px;"}
-*E.g., in 2023, 24% of Americans agreed that “climate change is a hoax and scientists touting its existence are lying”. <span style="font-size: 50%;">[@stockemerUnderstandingClimateChange2024]</span>*
-:::
-:::
-
-:::
-
----
-
-## {.big-center}
-
-To which extent do these people reject scientific knowledge?
-
----
-
-:::{.big-center}
-
-We asked participants basic science questions
-
-:::{.fragment}
-*E.g., “Are electrons smaller, larger, or the same size as atoms?”*
-:::
-
-:::
-
----
-
-:::{.big-center}
-
-We then showed them the scientifically consensual answer, and in some studies also a short explanation, and links to sources. 
-
-:::{.fragment}
-Then we asked: “Do you accept this answer?”
-:::
-
-:::
-
----
-
-:::{.big-center}
-We also asked: 
-
-:::{.fragment}
-"In general, would you say that you trust science a lot, some, not much, or not at all?"<span style="font-size: 50%;">[@wellcomeglobalmonitorWellcomeGlobalMonitor2018]</span>
-:::
-:::
-
----
-
-
-![](images/quasi-universal_acceptance.png)
-
-::: {.fragment .fade-out}
-<div style="position:absolute; top:23%; left:10%; width:75%; height:63%; background:white;"></div>
-:::
-
-::: {.fragment .fade-out}
-<div style="position:absolute; top:23%; left:10%; width:57%; height:63%; background:white;"></div>
-:::
-
-::: {.fragment .fade-out}
-<div style="position:absolute; top:23%; left:10%; width:38%; height:63%; background:white;"></div>
-:::
-
-::: {.fragment .fade-out}
-<div style="position:absolute; top:23%; left:10%; width:19%; height:63%; background:white;"></div>
-:::
-
-::: {.notes}
-
-There is a relationship between knowledge and trust. But: 
-
-- Even the lowest decile in science knowledge, which on average answered correctly only on 20 % of the questions, had an average acceptance rate of 91.7 %.
-
-- 
-:::
-
----
-
-## Conclusion
-
-::: {.big-center}
-
-::: {.fragment}
-In the US, essentially everyone accepts basic science knowledge.
-:::
-
-::: {.fragment}
-Participants who were convinced that climate change due to fossil emissions is a hoax (11 % of participants) had an acceptance rate of **92 %**.
-:::
-
-::: {.fragment}
-Even participants who strongly believed that the earth is flat (4 % of participants) had an acceptance rate of **87 %**
-:::
-
-:::
-
-:::{.notes}
-This suggests in many instances, science rejection might have nothing to do with how people evaluate the underlying science.
-
-Instead, other factors (e.g. political ideology) motivate people to reject specific science beliefs. 
-:::
-
-
-# [Chapter 7] <br> <br> Spotting False News and Doubting True News, A Meta-Analysis of News Judgments
-
-::: {.absolute right="-10%" bottom="-10%" style="font-size:1em; z-index:9999; width:300px; white-space:normal;"}
-[@pfanderSpottingFalseNews2025]
-:::
-
-::: {.absolute top="-5%" right="-10%" .fragment .fade-in-then-out fragment-index=1}
-![Sacha Altay](images/sacha.jpg){height="150px"}
-:::
-
----
-
-![](images/worry_misinfo.png){width="100%"}
-
-:::{.notes}
-At least since 2016--with the election of Donald Trump and Brexit--people generally worry about people believing misinformation.
-:::
-
----
-
-## {.big-center}
-
-There has been a lot of research on people's belief in misinformation
-
----
-
-![[@pennycookPracticalGuideDoing2021]](images/example-item2.jpg){fig-align="center" width="100%"}
-
-:::{.notes}
-In these studies, news are presented as they often appear on social media (picture, source or not, headline, sometimes a short lede)
-:::
-
----
-
-![[@pennycookPracticalGuideDoing2021]](images/example-item.jpg){width="100%"}
-
----
-
-::: {.big-center}
-A meta-analysis
-
-67 papers
-
-194'438 participants
-
-303 effect sizes 
-
-40 countries
-:::
-
----
-
-![](images/map.png)
-
----
-
-## {.big-center}
-
-Discernment = Accuracy(true news) − Accuracy(false news)
-
----
-
-::: {.big-center}
-For 298 of the 303 effect sizes, people rated true news as (a lot) more accurate than false news
-:::
-
----
-
-![](images/forest_discernment.png){width="100%" style="background:white;" fig-align="center"}
-
----
-
-## {.big-center}
-
-On the whole, people did well in discerning true from false news…
+<br>
 
 . . .
 
-but of course they still made some errors.
+Mediation *always* implies causation. 
 
 ---
 
-![](images/descriptive.png){width="100%"}
+## How **not** to defend your mediation model
+
+<br>
+
+""Effect sizes support my mediation model""
+
+<br>
+
+. . .
+
+Effect sizes *never* prove that your model is right. 
 
 ---
 
-## {.big-center}
+## Overview
 
-Skepticism bias = Error(true news) - Error(false news)
+1. Mediation is tempting
 
----
+2. What does a (typical) mediation analysis look like?
 
-::: {.big-center}
-For 203 of 303 effect sizes, people made (slightly) more errors on true news than on false news. 
+3. The model is probably wrong
+
+    - intuitive issues
+    - less intuitive issues
+
+4. How **not** to defend your mediation model
+
+::: {.fragment .highlight-blue fragment-index=1}
+5. What now?
 :::
 
 ---
 
-![](images/forest_skepticism.png){width="100%" style="background:white;" fig-align="center" }
+## What now?
+
+<br>
+
+To be honest, I don't know. But actual experts have given this more thought (reading list). 
+
+. . .
+
+<br>
+
+Two potential paths forward: 
+
+1. (more pragmatic) Spell out your assumptions
+
+2. (more idealistic) Think beyond your individual paper
 
 ---
 
-## Conclusion 
+## 1. Spell out your assumptions
 
-::: {.big-center}
-
-::: {.fragment}
-People discern rather well between true and false news.
-:::
-
-::: {.fragment}
-If they err, they tend to be more skeptical of true news than gullible towards false news.
-:::
-
-:::
+- Every mediation model is causal
+- Spell out your model
+- Say "under this model I, my estimates identify the mediation effect"
+- Be prepared for the "curse of transparency" - you make yourself vulnerable to critiques and reviewers
 
 ---
 
-## Conclusion 
+## 2. Think beyond your individual paper
 
-::: {.big-center}
+not everything has to be in one paper. 
 
-Misinformation (especially coming from elites) is a problem.
+there has never been (as far as i know), an clinical RCT showing that smoking causes cancer. 
 
-::: {.fragment}
-But people *not* believing true information might be the more pressing problem.
-:::
-
-:::
-
----
-
-![[@newmanReutersInstituteDigital2018]](images/reuters_2018.png){fig-align="center" width="100%"}
-
-:::{.notes}
-Something that is sometimes overseen: people don't seem to trust news a whole lot - which is problematic given that most news are true
-:::
-
-# General conclusion
-
----
-
-## {.big-center}
-
-Most people trust science at least to some extent.
-
-. . .
-
-Yet, they don’t understand or know much about science.
-
----
-
-## {.big-center}
-
-The rational impression account:
-
-. . .
-
-When exposed to science, people rationally develop a positive impression of science–in particular of the competence of scientists--by
-
-. . .
-
-- inferring competence from possessing rare knowledge,
-
-. . .
-
-- and by inferring accuracy from consensus.
-
-. . .
-
-However, they forget most of the information that gave rise to this impression.
-
----
-
-## {.big-center}
-
-This account can make sense of two facts that appear conflicting:
-
-. . .
-
-1. Science knowledge is only a weak predictor of trust in science. <span style="font-size: 50%;">[@allumScienceKnowledgeAttitudes2008]</span>
-
-. . .
-
-2. Education--in particular science education--is the strongest predictor of trust in science. <span style="font-size: 50%;">[@noyScienceGoodEffects2019; @wellcomeglobalmonitorWellcomeGlobalMonitor2018]</span>
-
----
-
-## {.big-center}
-
-According to the rational impression account, education mostly works by fostering (rational) impressions. 
-
-. . .
-
-This does not require building a profound understanding of science, or a long-term memory of certain science facts.
-
-# Limitations
-
----
-
-## {.big-center}
-
-The rational impression account explains trust--*not distrust*.
-
-. . .
-
-Even people who trust most scientific knowledge can still distrust science on specific instances for many reasons...
-
----
-
-## {.big-center}
-
-For example, because some knowledge is perceived as particularly inconvenient, 
-
-::: {.fragment fragment-index=1 .fade-in-then-out style="font-size:30px;"}
-*E.g., knowledge of climate change which would urge us to change our behavior*
-:::
-
-::: {.fragment fragment-index=2}
-or because it is rejected by other authorities–political, religious–which people trust.
-:::
-
-::: {.fragment fragment-index=3 .fade-in-then-out style="font-size:30px;"}
-*E.g., the rejection of evolution among many religious communities*
-:::
-
----
-
-## {.big-center}
-
-Just because there is a rational explanation for trust, distrust does not need to be irrational.
-
----
-
-## {.big-center}
-
-Some groups have been systematically neglected or ill-treated by science, e.g., African Americans. <span style="font-size: 50%;">[@brandtRacismResearchCase1978; @scharffMoreTuskegeeUnderstanding2010]</span> 
-
-. . .
-
-Some people--even if they believe scientists are competent--can have reason to suspect that scientists don't have their best interest at heart. 
-
-. . .
-
-::: {style="font-size:30px;"}
-*E.g., people who feel a general alienation from institutions, for instance due to rising inequality <span style="font-size: 50%;">[@gauchatCulturalAuthorityScience2011]</span>*
-:::
-
-
-::: {.notes}
-the tragically famous Tuskegee syphilis study 
-:::
-
----
-
-## {.big-center}
-
-The rational impression account is only a micro-level explanation.
-
-. . .
-
-It should be seen as complementary with macro-level (historical, sociological or political) explanations of trust in science.
-
-. . .
-
-::: {style="font-size:30px;"}
-*E.g., the political forces that led to the development of universal science education in many countries <span style="font-size: 50%;">[@childsCurriculumDevelopmentScience2015]</span>*
-:::
-
-# Implications
-
----
-
-## {.big-center}
-
-Science communication fosters trust in science.
-
-. . .
-
-Education has a positive impact even if it does not result in long-term memory of scientific facts or in an in-depth understanding of science. 
-
----
-
-## {.big-center}
-
-But...
-
----
-
-## {.big-center}
-
-Science communication should *not* stress consensus and impressiveness at all costs
-
-. . .
-
-- Transparency about uncertainty is crucial for a lasting trust relationship between science and the public <span style="font-size: 50%;">[@druckmanCommunicatingPolicyRelevantScience2015; @petersenTransparentCommunicationNegative2021]</span>
-
-. . .
-
-- Intellectual humility has been shown to increase trust in scientists <span style="font-size: 50%;">[@koetkeEffectSeeingScientists2024]</span>
-
----
-
-## {.big-center}
-
-Ultimately, doing better science will foster trust in science.
-
-. . .
-
-For example, people value open-science practices. <span style="font-size: 50%;">[@songTrustingShouldersOpen2022]</span>
-
-. . .
-
-These practices lead to more robust and consensual scientific findings.
-
-. . .
-
-::: {style="font-size:30px;"}
-*E.g., mandatory pre-registration for clinical trials <span style="font-size: 50%;">[@kaplanLikelihoodNullEffects2015]</span>*
-:::
+correlational evidence piling up, and biological/chemical evidence for fine grained processes have accumulated
 
 ---
 
@@ -1268,103 +861,5 @@ These practices lead to more robust and consensual scientific findings.
 ::: {#refs}
 :::
 
-# Backup slides
-
-# [Chapter 4] <br> <br> How wise is the crowd: <br> Can we infer people are accurate and competent merely because they agree with each other?
-
-::: {.absolute right="-3%" bottom="-3%" style="font-size:1em; z-index:9999; width:300px; white-space:normal;"}
-[@pfanderHowWiseCrowd2025]
-:::
-
----
-
-![](images/consensus_simulations.png){width="100%"}
-
----
-
-![](images/consensus_stimulus-exp4.png){width="100%"}
-
-
-# [Chapter 7] <br> <br> Spotting False News and Doubting True News, A Meta-Analysis of News Judgments
-
-::: {.absolute right="-10%" bottom="-10%" style="font-size:1em; z-index:9999; width:300px; white-space:normal;"}
-[@pfanderSpottingFalseNews2025]
-:::
-
-## {.big-center}
-
-The vast majority of the studies relied on a hand full of fact-checked items (Snopes, PolitiFact etc.) selected by the researchers.
-
-. . .
-
-Only in 3 papers, the researchers automatically scraped news...
-
----
-
-![](images/forest-automated.png){width="70%"}
-
-:::{.notes}
-The Garret study has been a longitudinal study and therefor provides many, many effect sizes. 
-:::
-
----
-
-## {.big-center}
-
-There might be a bias in the selection of news items that researchers use.
-
-People might appear more skeptical in misinformation studies than would be in the real world. 
-
-. . .
-
-But this does not change the broad conclusions... 
-
-:::{.notes}
-It is important to keep in mind that these are only 3 of more than 60 papers, all in the US. If they don't suffer from researcher selection bias of news items, they are not representative in many other ways...
-:::
-
----
-
-## {.big-center}
-
-Even assuming that people are slightly more gullible than skeptical...
-
-. . .
-
-- people consume very little information in general 
-
-. . .
-
-- among this information, the share of misinformation very small
-
----
-
-## {.big-center}
-
-For example... 
-
-- In the U.S., misinformation represents 1% of the news consumption and 0.15% of Americans’ daily media diet. <span style="font-size: 50%;">[@allenEvaluatingFakeNews2020a]</span>
-
-. . .
-
-- In France, misinformation represents 5% of the news consumption and 0.16% of people’s connected time. <span style="font-size: 50%;">[@cordonierHowFrenchInform2021]</span>
-
-::: {.notes}
-Using these base rates of information consumption, people being skeptical might be the more important issue
-:::
-
----
-
-![[@acerbiResearchNoteFighting2022]](images/exposure_misinformation.png){fig-align="center" width="100%"}
-
----
-
-![[@newmanReutersInstituteDigital2024]](images/reuters_interest_2024.png){fig-align="center" width="100%"}
-
-:::{.notes}
-In 2017, 63% of people said they were very or extremely interested in the news.
-
-In 2024, this number was down to 46%.
-:::
 
 
