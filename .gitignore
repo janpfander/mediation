@@ -1,0 +1,12 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+/.quarto/
+
+*no_git
+**/*.quarto_ipynb
+.httr-oauth
+.DS_Store
+.quarto
