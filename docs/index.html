@@ -9,7 +9,7 @@
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b651517ce65839d647a86e2780455cfb.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.24">
 
-  <title>phd_defense_presentation</title>
+  <title>mediation analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -31,6 +31,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -152,20 +153,7 @@
 <h1>Why mediation analysis might often be a bad idea</h1>
 <p><br></p>
 <div class="fragment">
-<p>… or is at least a lot hard than we like to think</p>
-</div>
-</section>
-<section class="slide level2">
-
-<div class="big-center">
-<p><em>Disclaimer</em></p>
-<p>This talk is:</p>
-<ul>
-<li>heavy on the problems</li>
-<li>light on solutions</li>
-<li>given by <strong>me</strong>, i.e.&nbsp;someone without specific expertise in causal inference and statistics</li>
-</ul>
-<p>Check out the reading list for learning from the real experts.</p>
+<p>… or is at least a lot harder than we might like to think</p>
 </div>
 </section>
 <section id="section" class="slide level2" data-background-image="images/adam_eve.jpg" data-background-size="100" data-background-position="center 50%">
@@ -180,19 +168,53 @@
 <p>… what it often turns out to be</p>
 </div>
 </section>
+<section class="slide level2">
+
+<h3 id="disclaimer"><em>Disclaimer</em></h3>
+<p>This talk is:</p>
+<ul>
+<li>focusing on problems</li>
+<li>light on solutions</li>
+<li>given by <strong>me</strong>, i.e.&nbsp;someone without specific expertise in causal inference and statistics</li>
+</ul>
+<p><br></p>
+<p>Check out the <a href="#/reading-list">reading list</a> to learn from actual experts.</p>
+<p><br></p>
+<p>This talk is mostly based on <a href="http://datacolada.org/103">Data Colada post 103</a></p>
+</section>
 <section id="overview" class="slide level2">
 <h2>Overview</h2>
+<div class="fragment" data-fragment-index="1">
+<div class="fragment highlight-blue" data-fragment-index="6">
 <ol type="1">
-<li class="fragment"><p>Mediation is tempting</p></li>
-<li class="fragment"><p>What does a (typical) mediation analysis look like?</p></li>
-<li class="fragment"><p>The model is probably wrong</p>
-<ul>
-<li class="fragment">intuitive issues</li>
-<li class="fragment">less intuitive issues</li>
-</ul></li>
-<li class="fragment"><p>How <strong>not</strong> to defend your mediation model</p></li>
-<li class="fragment"><p>What now?</p></li>
+<li>Mediation is tempting</li>
 </ol>
+</div>
+</div>
+<div class="fragment" data-fragment-index="2">
+<ol start="2" type="1">
+<li>What does a (typical) mediation analysis look like?</li>
+</ol>
+</div>
+<div class="fragment" data-fragment-index="3">
+<ol start="3" type="1">
+<li><p>The model is probably wrong</p>
+<ul>
+<li>intuitive issues</li>
+<li>less intuitive issues</li>
+</ul></li>
+</ol>
+</div>
+<div class="fragment" data-fragment-index="4">
+<ol start="4" type="1">
+<li>How <strong>not</strong> to defend your mediation model</li>
+</ol>
+</div>
+<div class="fragment" data-fragment-index="5">
+<ol start="5" type="1">
+<li>What now?</li>
+</ol>
+</div>
 </section>
 <section class="slide level2">
 
@@ -221,6 +243,20 @@
 <div style="position: absolute; top: 50%; left: 0; right: 0; margin: auto; width: fit-content; font-size:1.5em; padding: 0.5em 1em; background-color: rgba(40, 40, 40, .5); backdrop-filter: blur(5px); box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .5); border-radius: 5px;">
 <p>But how?</p>
 </div>
+<aside class="notes">
+<p>When Lind conducted his famous trial in 1747, the concept of vitamins didn’t exist at all — that wouldn’t come until the early 20th century. He just observed empirically that citrus fruits cured scurvy, but had no mechanistic explanation for why.</p>
+<p>Vitamin C (ascorbic acid) was only isolated and identified in 1932 by Albert Szent-Györgyi, nearly 200 years after Lind’s trial.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
 </section>
 <section id="section-4" class="slide level2" data-background-image="images/scurvy.jpg" data-background-size="100%" data-background-position="center 50%">
 <h2></h2>
@@ -278,7 +314,8 @@
 <div class="big-center">
 <p>Next, we might want to ask: “Why?”/“How?”</p>
 <div class="fragment">
-<p>We might have an idea: “It might be because regular tests make students study more”</p>
+<p>Suppose we have an idea:</p>
+<p>“It might be because regular tests make students study more”</p>
 </div>
 <div class="fragment">
 <p>That’s a mediation question</p>
@@ -302,16 +339,16 @@
 </div><div class="column" style="width:50%;">
 <svg viewbox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; margin-top: -20px;">
 
-  <!-- Boxes -->
-  <rect x="20" y="55" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="70" y="85" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+  <rect x="10" y="45" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="70" y="68" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">X</text>
+  <text x="70" y="86" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Quizzes</text>
 
-  <rect x="280" y="55" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="330" y="85" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">Y</text>
+  <rect x="270" y="45" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="330" y="68" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">Y</text>
+  <text x="330" y="86" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Exam grade</text>
 
-  <!-- Path c: X -> Y (total) -->
-  <line x1="120" y1="80" x2="280" y2="80" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p1)"></line>
-  <text x="200" y="72" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="Calibri">c</text>
+  <line x1="130" y1="75" x2="270" y2="75" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p1)"></line>
+  <text x="200" y="67" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="Calibri">c</text>
 
   <defs>
     <marker id="arrow-teal-p1" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto">
@@ -322,16 +359,16 @@
 </svg>
 <svg viewbox="0 0 400 160" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; margin-top: -20px;">
 
-  <!-- Boxes -->
-  <rect x="20" y="55" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="70" y="85" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+  <rect x="10" y="45" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="70" y="68" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">X</text>
+  <text x="70" y="86" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Quizzes</text>
 
-  <rect x="150" y="55" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="200" y="85" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M</text>
+  <rect x="150" y="45" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="210" y="68" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">M</text>
+  <text x="210" y="86" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Study hours</text>
 
-  <!-- Path a: X -> M -->
-  <line x1="120" y1="80" x2="150" y2="80" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p2)"></line>
-  <text x="135" y="72" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="Calibri">a</text>
+  <line x1="130" y1="75" x2="150" y2="75" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p2)"></line>
+  <text x="140" y="67" text-anchor="middle" fill="#14B8A6" font-size="14" font-family="Calibri">a</text>
 
   <defs>
     <marker id="arrow-teal-p2" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto">
@@ -342,28 +379,26 @@
 </svg>
 <svg viewbox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; margin-top: -20px;">
 
-  <!-- Boxes -->
-  <rect x="20" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="70" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+  <rect x="10" y="120" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="70" y="143" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">X</text>
+  <text x="70" y="161" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Quizzes</text>
 
-  <!-- M with red dashed border -->
-  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3"></rect>
-  <text x="200" y="50" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M</text>
+  <rect x="150" y="20" width="120" height="60" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3"></rect>
+  <text x="210" y="43" text-anchor="middle" fill="#EF4444" font-size="13" font-family="Calibri">M</text>
+  <text x="210" y="61" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Study hours</text>
 
-  <rect x="280" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="330" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">Y</text>
+  <rect x="280" y="120" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="340" y="143" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">Y</text>
+  <text x="340" y="161" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Exam grade</text>
 
-  <!-- Path a: X -> M -->
-  <line x1="120" y1="125" x2="150" y2="60" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p3)"></line>
-  <text x="118" y="85" fill="#14B8A6" font-size="14" font-family="Calibri">a</text>
+  <line x1="130" y1="128" x2="153" y2="72" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p3)"></line>
+  <text x="118" y="95" fill="#14B8A6" font-size="14" font-family="Calibri">a</text>
 
-  <!-- Path b: M -> Y -->
-  <line x1="250" y1="60" x2="280" y2="125" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p3)"></line>
-  <text x="278" y="85" fill="#14B8A6" font-size="14" font-family="Calibri">b</text>
+  <line x1="270" y1="65" x2="292" y2="128" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-p3)"></line>
+  <text x="288" y="90" fill="#14B8A6" font-size="14" font-family="Calibri">b</text>
 
-  <!-- Path c': X -> Y (direct) -->
-  <line x1="120" y1="145" x2="280" y2="145" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-p3)"></line>
-  <text x="200" y="138" text-anchor="middle" fill="#EF4444" font-size="14" font-family="Calibri">c'</text>
+  <line x1="130" y1="150" x2="280" y2="150" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-p3)"></line>
+  <text x="205" y="142" text-anchor="middle" fill="#EF4444" font-size="14" font-family="Calibri">c'</text>
 
   <defs>
     <marker id="arrow-teal-p3" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto">
@@ -405,23 +440,26 @@
 <h2>Reverse Causality</h2>
 <svg viewbox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:70%; height:auto;">
 
-  <rect x="20" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="70" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+  <rect x="10" y="120" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="70" y="143" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">X</text>
+  <text x="70" y="161" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Quizzes</text>
 
-  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="200" y="50" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M</text>
+  <rect x="150" y="20" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="210" y="43" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">M</text>
+  <text x="210" y="61" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Study hours</text>
 
-  <rect x="280" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="330" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">Y</text>
+  <rect x="280" y="120" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="340" y="143" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">Y</text>
+  <text x="340" y="161" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Exam grade</text>
 
   <!-- X -> M -->
-  <line x1="120" y1="125" x2="150" y2="60" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-rc)"></line>
+  <line x1="130" y1="128" x2="153" y2="72" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-rc)"></line>
 
   <!-- X -> Y -->
-  <line x1="120" y1="145" x2="280" y2="145" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-rc)"></line>
+  <line x1="130" y1="150" x2="280" y2="150" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-rc)"></line>
 
   <!-- Y -> M (reverse, red dotted) -->
-  <line x1="300" y1="120" x2="250" y2="65" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-rc)"></line>
+  <line x1="310" y1="120" x2="268" y2="72" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-rc)"></line>
 
   <defs>
     <marker id="arrow-teal-rc" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto">
@@ -438,40 +476,44 @@
 <h2>Omitted other Mediators</h2>
 <svg viewbox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="width:70%; height:auto;">
 
-  <rect x="20" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="70" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">X</text>
+  <rect x="10" y="120" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="70" y="143" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">X</text>
+  <text x="70" y="161" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Quizzes</text>
 
   <!-- M1 (included) -->
-  <rect x="150" y="20" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="200" y="50" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M₁</text>
+  <rect x="150" y="20" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="210" y="43" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">M₁</text>
+  <text x="210" y="61" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Study hours</text>
 
   <!-- M2 (omitted) -->
-  <rect x="150" y="210" width="100" height="50" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3"></rect>
-  <text x="200" y="240" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">M₂</text>
-  <text x="200" y="275" text-anchor="middle" fill="#EF4444" font-size="11" font-family="Calibri">(omitted)</text>
+  <rect x="150" y="210" width="120" height="60" rx="6" fill="#1E293B" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3"></rect>
+  <text x="210" y="233" text-anchor="middle" fill="#EF4444" font-size="13" font-family="Calibri">M₂</text>
+  <text x="210" y="251" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">(e.g., Understanding)</text>
+  <text x="210" y="282" text-anchor="middle" fill="#EF4444" font-size="11" font-family="Calibri">(omitted)</text>
 
-  <rect x="280" y="120" width="100" height="50" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
-  <text x="330" y="150" text-anchor="middle" fill="white" font-size="18" font-family="Calibri">Y</text>
+  <rect x="280" y="120" width="120" height="60" rx="6" fill="#1E293B" stroke="#14B8A6" stroke-width="2"></rect>
+  <text x="340" y="143" text-anchor="middle" fill="#14B8A6" font-size="13" font-family="Calibri">Y</text>
+  <text x="340" y="161" text-anchor="middle" fill="white" font-size="12" font-family="Calibri">Exam grade</text>
 
   <!-- X -> M1 -->
-  <line x1="120" y1="125" x2="150" y2="60" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-om)"></line>
-  <text x="118" y="85" fill="#14B8A6" font-size="14" font-family="Calibri">a₁</text>
+  <line x1="130" y1="128" x2="153" y2="72" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-om)"></line>
+  <text x="118" y="95" fill="#14B8A6" font-size="14" font-family="Calibri">a₁</text>
 
   <!-- M1 -> Y -->
-  <line x1="250" y1="60" x2="280" y2="125" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-om)"></line>
-  <text x="278" y="85" fill="#14B8A6" font-size="14" font-family="Calibri">b₁</text>
+  <line x1="270" y1="65" x2="292" y2="128" stroke="#14B8A6" stroke-width="2" marker-end="url(#arrow-teal-om)"></line>
+  <text x="288" y="90" fill="#14B8A6" font-size="14" font-family="Calibri">b₁</text>
 
   <!-- X -> M2 -->
-  <line x1="120" y1="155" x2="150" y2="220" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-om)"></line>
+  <line x1="130" y1="162" x2="153" y2="218" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-om)"></line>
   <text x="112" y="200" fill="#EF4444" font-size="14" font-family="Calibri">a₂</text>
 
   <!-- M2 -> Y -->
-  <line x1="250" y1="225" x2="280" y2="165" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-om)"></line>
-  <text x="278" y="210" fill="#EF4444" font-size="14" font-family="Calibri">b₂</text>
+  <line x1="270" y1="228" x2="292" y2="172" stroke="#EF4444" stroke-width="2" stroke-dasharray="6,3" marker-end="url(#arrow-red-om)"></line>
+  <text x="288" y="210" fill="#EF4444" font-size="14" font-family="Calibri">b₂</text>
 
   <!-- M1 <-> M2 correlation -->
-  <line x1="200" y1="70" x2="200" y2="210" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4,3"></line>
-  <text x="208" y="148" fill="#F59E0B" font-size="12" font-family="Calibri">r ≠ 0</text>
+  <line x1="210" y1="80" x2="210" y2="210" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4,3"></line>
+  <text x="218" y="148" fill="#F59E0B" font-size="12" font-family="Calibri">r ≠ 0</text>
 
   <defs>
     <marker id="arrow-teal-om" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto">
@@ -607,7 +649,7 @@
 creates a spurious negative correlation between X and U within strata of M</p>
 <p><br></p>
 <p><span style="color: #EF4444;"><strong>c’</strong> underestimated</span><br>
-— OLS sees quiz assignment as a negative predictor of grades once M is held fixed</p>
+— With M held constant, OLS sees quiz assignment as a negative predictor of grades</p>
 </div><div class="column" style="width:70%;">
 <div style="display: flex; justify-content: center;">
 <svg viewbox="0 0 400 350" xmlns="http://www.w3.org/2000/svg" style="width:90%; height:auto;">
@@ -771,7 +813,7 @@ creates a spurious negative correlation between X and U within strata of M</p>
 <p>“Even though I’m estimating a mediation, I never speak of causal effects.”</p>
 <p><br></p>
 <div class="fragment">
-<p>Mediation <em>always</em> implies causation.</p>
+<p>Mediation <em>always</em> implies causation <span class="citation" data-cites="groszTabooExplicitCausal2020">(<a href="#/reading-list" role="doc-biblioref" onclick="">Grosz, Rohrer, and Thoemmes 2020</a>)</span>.</p>
 </div>
 </section>
 <section id="how-not-to-defend-your-mediation-model-1" class="slide level2">
@@ -780,7 +822,7 @@ creates a spurious negative correlation between X and U within strata of M</p>
 <p>““Effect sizes support my mediation model””</p>
 <p><br></p>
 <div class="fragment">
-<p>Effect sizes <em>never</em> prove that your model is right.</p>
+<p>Effect sizes <em>never</em> prove that your model is right <span class="citation" data-cites="thoemmesReversingArrowsMediation2015">(<a href="#/reading-list" role="doc-biblioref" onclick="">Thoemmes 2015</a>)</span>.</p>
 </div>
 </section>
 <section id="overview-4" class="slide level2">
@@ -804,38 +846,85 @@ creates a spurious negative correlation between X and U within strata of M</p>
 <section id="what-now" class="slide level2">
 <h2>What now?</h2>
 <p><br></p>
-<p>To be honest, I don’t know. But actual experts have given this more thought (reading list).</p>
+<p>To be honest, I don’t know. But actual experts have given this more thought <a href="#/reading-list">reading list</a>.</p>
 <div class="fragment">
 <p><br></p>
-<p>Two potential paths forward:</p>
-<ol type="1">
-<li><p>(more pragmatic) Spell out your assumptions</p></li>
-<li><p>(more idealistic) Think beyond your individual paper</p></li>
-</ol>
+<p>The cleanest solution for a valid mediation analysis is to <strong>randomize the mediator itself</strong></p>
 </div>
+<div class="fragment">
+<p>However, in practice, this is really hard.</p>
+</div>
+</section>
+<section id="what-now-1" class="slide level2">
+<h2>What now?</h2>
+<p>Two potential paths forward:</p>
+<p><br></p>
+<ol type="1">
+<li>(more pragmatic) Spell out your assumptions clearly</li>
+</ol>
+<p><br></p>
+<ol start="2" type="1">
+<li>(more idealistic) Think beyond your individual paper</li>
+</ol>
 </section>
 <section id="spell-out-your-assumptions" class="slide level2">
 <h2>1. Spell out your assumptions</h2>
 <ul>
-<li>Every mediation model is causal</li>
-<li>Spell out your model</li>
-<li>Say “under this model I, my estimates identify the mediation effect”</li>
-<li>Be prepared for the “curse of transparency” - you make yourself vulnerable to critiques and reviewers</li>
+<li><p>Every mediation model is causal</p></li>
+<li><p>Make that model explicit, e.g., by drawing a Directed Acyclic Graph (DAG)</p></li>
+<li><p>Say “under this model I, my estimates identify the mediation effect”</p></li>
+<li><p>Be prepared for the “curse of transparency”</p>
+<ul>
+<li>being explicit will make you more vulnerable to critiques and reviewers</li>
+</ul></li>
 </ul>
 </section>
 <section id="think-beyond-your-individual-paper" class="slide level2">
 <h2>2. Think beyond your individual paper</h2>
-<p>not everything has to be in one paper.</p>
-<p>there has never been (as far as i know), an clinical RCT showing that smoking causes cancer.</p>
-<p>correlational evidence piling up, and biological/chemical evidence for fine grained processes have accumulated</p>
+<ul>
+<li><p>Publishing incentives encourage to propose a grand theory and provide a complete test of it in a paper</p></li>
+<li><p>This is a very individualist view on how science works. Actually, it’s simply not how science works</p></li>
+<li><p>For complex causal processes (mediation), evidence needs to cumulate</p>
+<ul>
+<li>e.g., as far as I know, no RCT has demonstrated that smoking causes cancer</li>
+<li>it would be highly unethical to run such an RCT</li>
+<li>however, data on correlations and data on biological processes have accumulated</li>
+</ul></li>
+</ul>
 </section>
 <section id="thank-you" class="slide level2">
 <h2>Thank you!</h2>
 </section>
-<section id="references" class="slide level2 smaller scrollable">
+<section id="reading-list" class="slide level2 smaller scrollable">
 <h2>References</h2>
-<div id="refs" role="list">
-
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bullockYesWhatMechanism2010" class="csl-entry" role="listitem">
+Bullock, John G., Donald P. Green, and Shang E. Ha. 2010. <span>“Yes, but What’s the Mechanism? (Don’t Expect an Easy Answer).”</span> <em>Journal of Personality and Social Psychology</em> 98 (4): 550–58. <a href="https://doi.org/10.1037/a0018933">https://doi.org/10.1037/a0018933</a>.
+</div>
+<div id="ref-chanMediationAnalysisWarranted2020" class="csl-entry" role="listitem">
+Chan, Michael, Panfeng Hu, and Macau K. F. Mak. 2020. <span>“Mediation <span>Analysis</span> and <span>Warranted Inferences</span> in <span>Media</span> and <span>Communication Research</span>: <span>Examining Research Design</span> in <span>Communication Journals From</span> 1996 to 2017.”</span> <em>Journalism &amp; Mass Communication Quarterly</em>, October, 107769902096151. <a href="https://doi.org/10.1177/1077699020961519">https://doi.org/10.1177/1077699020961519</a>.
+</div>
+<div id="ref-greenEnoughAlreadyBlack2010" class="csl-entry" role="listitem">
+Green, Donald P., Shang E. Ha, and John G. Bullock. 2010. <span>“Enough <span>Already</span> about <span>‘<span>Black Box</span>’</span> <span>Experiments</span>: <span>Studying Mediation Is More Difficult</span> Than <span>Most Scholars Suppose</span>.”</span> <em>The ANNALS of the American Academy of Political and Social Science</em> 628 (1): 200–208. <a href="https://doi.org/10.1177/0002716209351526">https://doi.org/10.1177/0002716209351526</a>.
+</div>
+<div id="ref-groszTabooExplicitCausal2020" class="csl-entry" role="listitem">
+Grosz, Michael P., Julia M. Rohrer, and Felix Thoemmes. 2020. <span>“The <span>Taboo Against Explicit Causal Inference</span> in <span>Nonexperimental Psychology</span>.”</span> <em>Perspectives on Psychological Science</em> 15 (5): 1243–55. <a href="https://doi.org/10.1177/1745691620921521">https://doi.org/10.1177/1745691620921521</a>.
+</div>
+<div id="ref-leeGuidelineReportingMediation2021" class="csl-entry" role="listitem">
+Lee, Hopin, Aidan G. Cashin, Sarah E. Lamb, Sally Hopewell, Stijn Vansteelandt, Tyler J. VanderWeele, David P. MacKinnon, et al. 2021. <span>“A <span>Guideline</span> for <span>Reporting Mediation Analyses</span> of <span>Randomized Trials</span> and <span>Observational Studies</span>: <span>The AGReMA Statement</span>.”</span> <em>JAMA</em> 326 (11): 1045. <a href="https://doi.org/10.1001/jama.2021.14075">https://doi.org/10.1001/jama.2021.14075</a>.
+</div>
+<div id="ref-rohrerThinkingClearlyCorrelations2018" class="csl-entry" role="listitem">
+Rohrer, Julia M. 2018. <span>“Thinking <span>Clearly About Correlations</span> and <span>Causation</span>: <span>Graphical Causal Models</span> for <span>Observational Data</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 1 (1): 27–42. <a href="https://doi.org/10.1177/2515245917745629">https://doi.org/10.1177/2515245917745629</a>.
+</div>
+<div id="ref-rohrerThatsLotProcess2021" class="csl-entry" role="listitem">
+Rohrer, Julia M., Paul Hünermund, Ruben C. Arslan, and Malte Elson. 2021. <span>“That’s a Lot to <span>Process</span>! <span>Pitfalls</span> of <span>Popular Path Models</span>.”</span> PsyArXiv. <a href="https://doi.org/10.31234/osf.io/paeb7">https://doi.org/10.31234/osf.io/paeb7</a>.
+</div>
+<div id="ref-simonsohn103MediationAnalysis2022" class="csl-entry" role="listitem">
+Simonsohn, Uri. 2022. <span>“[103] <span>Mediation Analysis</span> Is <span>Counterintuitively Invalid</span>.”</span> <em>Data Colada</em>. http://datacolada.org/103.
+</div>
+<div id="ref-thoemmesReversingArrowsMediation2015" class="csl-entry" role="listitem">
+Thoemmes, Felix. 2015. <span>“Reversing <span>Arrows</span> in <span>Mediation Models Does Not Distinguish Plausible Models</span>.”</span> <em>Basic and Applied Social Psychology</em> 37 (4): 226–34. <a href="https://doi.org/10.1080/01973533.2015.1049351">https://doi.org/10.1080/01973533.2015.1049351</a>.
+</div>
 </div>
 
 

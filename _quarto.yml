@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "phd_defense_presentation"
+  title: "mediation analysis"
   navbar:
     left:
       - href: index.qmd

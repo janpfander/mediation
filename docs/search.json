@@ -2,183 +2,183 @@
   {
     "objectID": "index.html#section",
     "href": "index.html#section",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "",
     "text": "what mediation analysis looks like to researchers"
   },
   {
     "objectID": "index.html#section-1",
     "href": "index.html#section-1",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "",
     "text": "… what it often turns out to be"
   },
   {
     "objectID": "index.html#overview",
     "href": "index.html#overview",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Overview",
-    "text": "Overview\n\nMediation is tempting\nWhat does a (typical) mediation analysis look like?\nThe model is probably wrong\n\nintuitive issues\nless intuitive issues\n\nHow not to defend your mediation model\nWhat now?"
+    "text": "Overview\n\n\n\nMediation is tempting\n\n\n\n\n\nWhat does a (typical) mediation analysis look like?\n\n\n\n\nThe model is probably wrong\n\nintuitive issues\nless intuitive issues\n\n\n\n\n\nHow not to defend your mediation model\n\n\n\n\nWhat now?"
   },
   {
     "objectID": "index.html#section-2",
     "href": "index.html#section-2",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "",
     "text": "James Lind’s treating scurvy with citrus fruit.\nSource: https://www.bbc.com/news/uk-england-37320399 \n\n\n\neating lemons → cure scurvy"
   },
   {
     "objectID": "index.html#section-3",
     "href": "index.html#section-3",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "",
-    "text": "James Lind’s treating scurvy with citrus fruit.\nSource: https://www.bbc.com/news/uk-england-37320399 \n\n\nBut how?"
+    "text": "James Lind’s treating scurvy with citrus fruit.\nSource: https://www.bbc.com/news/uk-england-37320399 \n\n\nBut how?\n\n\nWhen Lind conducted his famous trial in 1747, the concept of vitamins didn’t exist at all — that wouldn’t come until the early 20th century. He just observed empirically that citrus fruits cured scurvy, but had no mechanistic explanation for why.\nVitamin C (ascorbic acid) was only isolated and identified in 1932 by Albert Szent-Györgyi, nearly 200 years after Lind’s trial."
   },
   {
     "objectID": "index.html#section-4",
     "href": "index.html#section-4",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "",
     "text": "James Lind’s treating scurvy with citrus fruit.\nSource: https://www.bbc.com/news/uk-england-37320399 \n\n\neating lemons → absorb vitamine c → cure scurvy"
   },
   {
     "objectID": "index.html#overview-1",
     "href": "index.html#overview-1",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Overview",
     "text": "Overview\n\nMediation is tempting\n\n\n\nWhat does a (typical) mediation analysis look like?\n\n\n\nThe model is probably wrong\n\nintuitive issues\nless intuitive issues\n\nHow not to defend your mediation model\nWhat now?"
   },
   {
     "objectID": "index.html#the-3-steps-of-mediation",
     "href": "index.html#the-3-steps-of-mediation",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "The 3 steps of mediation",
-    "text": "The 3 steps of mediation\n\n\nStep 1 — Total effect of X on Y\n\\[Y = \\alpha + cX\\]\n\nStep 2 — Effect of X on mediator M\n\\[M = \\alpha + aX\\]\n\nStep 3 — Effect of X on Y, controlling for M\n\\[Y = \\alpha + c'X + bM\\]\n\nMediation = \\(c - c'\\)\n\n\n\n  \n  \n  X\n\n  \n  Y\n\n  \n  \n  c\n\n  \n    \n      \n    \n  \n\n\n\n\n  \n  \n  X\n\n  \n  M\n\n  \n  \n  a\n\n  \n    \n      \n    \n  \n\n\n\n\n  \n  \n  X\n\n  \n  \n  M\n\n  \n  Y\n\n  \n  \n  a\n\n  \n  \n  b\n\n  \n  \n  c'"
+    "text": "The 3 steps of mediation\n\n\nStep 1 — Total effect of X on Y\n\\[Y = \\alpha + cX\\]\n\nStep 2 — Effect of X on mediator M\n\\[M = \\alpha + aX\\]\n\nStep 3 — Effect of X on Y, controlling for M\n\\[Y = \\alpha + c'X + bM\\]\n\nMediation = \\(c - c'\\)\n\n\n\n  \n  X\n  Quizzes\n\n  \n  Y\n  Exam grade\n\n  \n  c\n\n  \n    \n      \n    \n  \n\n\n\n\n  \n  X\n  Quizzes\n\n  \n  M\n  Study hours\n\n  \n  a\n\n  \n    \n      \n    \n  \n\n\n\n\n  \n  X\n  Quizzes\n\n  \n  M\n  Study hours\n\n  \n  Y\n  Exam grade\n\n  \n  a\n\n  \n  b\n\n  \n  c'"
   },
   {
     "objectID": "index.html#overview-2",
     "href": "index.html#overview-2",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Overview",
     "text": "Overview\n\nMediation is tempting\nWhat does a (typical) mediation analysis look like?\n\n\n\nThe model is probably wrong\n\nintuitive issues\nless intuitive issues\n\n\n\n\nHow not to defend your mediation model\nWhat now?"
   },
   {
     "objectID": "index.html#the-model-is-probably-wrong",
     "href": "index.html#the-model-is-probably-wrong",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "The model is probably wrong",
     "text": "The model is probably wrong\nIntuitive issues"
   },
   {
     "objectID": "index.html#reverse-causality",
     "href": "index.html#reverse-causality",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Reverse Causality",
-    "text": "Reverse Causality\n\n\n  \n  X\n\n  \n  M\n\n  \n  Y"
+    "text": "Reverse Causality\n\n\n  \n  X\n  Quizzes\n\n  \n  M\n  Study hours\n\n  \n  Y\n  Exam grade"
   },
   {
     "objectID": "index.html#omitted-other-mediators",
     "href": "index.html#omitted-other-mediators",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Omitted other Mediators",
-    "text": "Omitted other Mediators\n\n\n  \n  X\n\n  \n  \n  M₁\n\n  \n  \n  M₂\n  (omitted)\n\n  \n  Y\n\n  \n  \n  a₁\n\n  \n  \n  b₁\n\n  \n  \n  a₂\n\n  \n  \n  b₂\n\n  \n  \n  r ≠ 0"
+    "text": "Omitted other Mediators\n\n\n  \n  X\n  Quizzes\n\n  \n  \n  M₁\n  Study hours\n\n  \n  \n  M₂\n  (e.g., Understanding)\n  (omitted)\n\n  \n  Y\n  Exam grade\n\n  \n  \n  a₁\n\n  \n  \n  b₁\n\n  \n  \n  a₂\n\n  \n  \n  b₂\n\n  \n  \n  r ≠ 0"
   },
   {
     "objectID": "index.html#the-model-is-probably-wrong-1",
     "href": "index.html#the-model-is-probably-wrong-1",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "The model is probably wrong",
     "text": "The model is probably wrong\nLess intuitive issues"
   },
   {
     "objectID": "index.html#who-will-get-a-better-grade",
     "href": "index.html#who-will-get-a-better-grade",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Who will get a better grade?",
     "text": "Who will get a better grade?"
   },
   {
     "objectID": "index.html#who-loves-math-more",
     "href": "index.html#who-loves-math-more",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Who loves math more?",
     "text": "Who loves math more?"
   },
   {
     "objectID": "index.html#now-who-will-get-a-better-grade",
     "href": "index.html#now-who-will-get-a-better-grade",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Now, who will get a better grade?",
     "text": "Now, who will get a better grade?"
   },
   {
     "objectID": "index.html#overview-3",
     "href": "index.html#overview-3",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Overview",
     "text": "Overview\n\nMediation is tempting\nWhat does a (typical) mediation analysis look like?\nThe model is probably wrong\n\nintuitive issues\nless intuitive issues\n\n\n\n\nHow not to defend your mediation model\n\n\n\nWhat now?"
   },
   {
     "objectID": "index.html#how-not-to-defend-your-mediation-model",
     "href": "index.html#how-not-to-defend-your-mediation-model",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "How not to defend your mediation model",
-    "text": "How not to defend your mediation model\n\n“Even though I’m estimating a mediation, I never speak of causal effects.”\n\n\nMediation always implies causation."
+    "text": "How not to defend your mediation model\n\n“Even though I’m estimating a mediation, I never speak of causal effects.”\n\n\nMediation always implies causation (Grosz, Rohrer, and Thoemmes 2020)."
   },
   {
     "objectID": "index.html#how-not-to-defend-your-mediation-model-1",
     "href": "index.html#how-not-to-defend-your-mediation-model-1",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "How not to defend your mediation model",
-    "text": "How not to defend your mediation model\n\n““Effect sizes support my mediation model””\n\n\nEffect sizes never prove that your model is right."
+    "text": "How not to defend your mediation model\n\n““Effect sizes support my mediation model””\n\n\nEffect sizes never prove that your model is right (Thoemmes 2015)."
   },
   {
     "objectID": "index.html#overview-4",
     "href": "index.html#overview-4",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Overview",
     "text": "Overview\n\nMediation is tempting\nWhat does a (typical) mediation analysis look like?\nThe model is probably wrong\n\nintuitive issues\nless intuitive issues\n\nHow not to defend your mediation model\n\n\n\nWhat now?"
   },
   {
     "objectID": "index.html#what-now",
     "href": "index.html#what-now",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "What now?",
-    "text": "What now?\n\nTo be honest, I don’t know. But actual experts have given this more thought (reading list).\n\n\nTwo potential paths forward:\n\n(more pragmatic) Spell out your assumptions\n(more idealistic) Think beyond your individual paper"
+    "text": "What now?\n\nTo be honest, I don’t know. But actual experts have given this more thought reading list.\n\n\nThe cleanest solution for a valid mediation analysis is to randomize the mediator itself\n\n\nHowever, in practice, this is really hard."
+  },
+  {
+    "objectID": "index.html#what-now-1",
+    "href": "index.html#what-now-1",
+    "title": "mediation analysis",
+    "section": "What now?",
+    "text": "What now?\nTwo potential paths forward:\n\n\n(more pragmatic) Spell out your assumptions clearly\n\n\n\n(more idealistic) Think beyond your individual paper"
   },
   {
     "objectID": "index.html#spell-out-your-assumptions",
     "href": "index.html#spell-out-your-assumptions",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "1. Spell out your assumptions",
-    "text": "1. Spell out your assumptions\n\nEvery mediation model is causal\nSpell out your model\nSay “under this model I, my estimates identify the mediation effect”\nBe prepared for the “curse of transparency” - you make yourself vulnerable to critiques and reviewers"
+    "text": "1. Spell out your assumptions\n\nEvery mediation model is causal\nMake that model explicit, e.g., by drawing a Directed Acyclic Graph (DAG)\nSay “under this model I, my estimates identify the mediation effect”\nBe prepared for the “curse of transparency”\n\nbeing explicit will make you more vulnerable to critiques and reviewers"
   },
   {
     "objectID": "index.html#think-beyond-your-individual-paper",
     "href": "index.html#think-beyond-your-individual-paper",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "2. Think beyond your individual paper",
-    "text": "2. Think beyond your individual paper\nnot everything has to be in one paper.\nthere has never been (as far as i know), an clinical RCT showing that smoking causes cancer.\ncorrelational evidence piling up, and biological/chemical evidence for fine grained processes have accumulated"
+    "text": "2. Think beyond your individual paper\n\nPublishing incentives encourage to propose a grand theory and provide a complete test of it in a paper\nThis is a very individualist view on how science works. Actually, it’s simply not how science works\nFor complex causal processes (mediation), evidence needs to cumulate\n\ne.g., as far as I know, no RCT has demonstrated that smoking causes cancer\nit would be highly unethical to run such an RCT\nhowever, data on correlations and data on biological processes have accumulated"
   },
   {
     "objectID": "index.html#thank-you",
     "href": "index.html#thank-you",
-    "title": "phd_defense_presentation",
+    "title": "mediation analysis",
     "section": "Thank you!",
     "text": "Thank you!"
   },
   {
-    "objectID": "index.html#references",
-    "href": "index.html#references",
-    "title": "phd_defense_presentation",
+    "objectID": "index.html#reading-list",
+    "href": "index.html#reading-list",
+    "title": "mediation analysis",
     "section": "References",
-    "text": "References"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2\n\n\nAllen et al. (2020) Cordonier and Brest (2021) Newman et al. (2024) Acerbi, Altay, and Mercier (2022) Noy and O’Brien (2019)\n\n\n\n\nReferences\n\nAcerbi, Alberto, Sacha Altay, and Hugo Mercier. 2022. “Research Note: Fighting Misinformation or Fighting for Information?” Harvard Kennedy School Misinformation Review, January. https://doi.org/10.37016/mr-2020-87.\n\n\nAllen, Jennifer, Baird Howland, Markus Mobius, David Rothschild, and Duncan J. Watts. 2020. “Evaluating the Fake News Problem at the Scale of the Information Ecosystem.” Science Advances 6 (14): eaay3539. https://doi.org/10.1126/sciadv.aay3539.\n\n\nCordonier, Laurent, and Aurélien Brest. 2021. “How Do the French Inform Themselves on the Internet? Analysis of Online Information and Disinformation Behaviors,” 45.\n\n\nNewman, Nic, Richard Fletcher, Craig T. Robertson, Amy Ross Arguedas, and Rasmus Kleis Nielsen. 2024. “Reuters Institute Digital News Report 2024.” https://doi.org/10.60625/RISJ-VY6N-4V57.\n\n\nNoy, Shiri, and Timothy L. O’Brien. 2019. “Science for Good? The Effects of Education and National Context on Perceptions of Science.” Public Understanding of Science 28 (8): 897–916. https://doi.org/10.1177/0963662519863575."
+    "text": "References\n\n\nBullock, John G., Donald P. Green, and Shang E. Ha. 2010. “Yes, but What’s the Mechanism? (Don’t Expect an Easy Answer).” Journal of Personality and Social Psychology 98 (4): 550–58. https://doi.org/10.1037/a0018933.\n\n\nChan, Michael, Panfeng Hu, and Macau K. F. Mak. 2020. “Mediation Analysis and Warranted Inferences in Media and Communication Research: Examining Research Design in Communication Journals From 1996 to 2017.” Journalism & Mass Communication Quarterly, October, 107769902096151. https://doi.org/10.1177/1077699020961519.\n\n\nGreen, Donald P., Shang E. Ha, and John G. Bullock. 2010. “Enough Already about ‘Black Box’ Experiments: Studying Mediation Is More Difficult Than Most Scholars Suppose.” The ANNALS of the American Academy of Political and Social Science 628 (1): 200–208. https://doi.org/10.1177/0002716209351526.\n\n\nGrosz, Michael P., Julia M. Rohrer, and Felix Thoemmes. 2020. “The Taboo Against Explicit Causal Inference in Nonexperimental Psychology.” Perspectives on Psychological Science 15 (5): 1243–55. https://doi.org/10.1177/1745691620921521.\n\n\nLee, Hopin, Aidan G. Cashin, Sarah E. Lamb, Sally Hopewell, Stijn Vansteelandt, Tyler J. VanderWeele, David P. MacKinnon, et al. 2021. “A Guideline for Reporting Mediation Analyses of Randomized Trials and Observational Studies: The AGReMA Statement.” JAMA 326 (11): 1045. https://doi.org/10.1001/jama.2021.14075.\n\n\nRohrer, Julia M. 2018. “Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data.” Advances in Methods and Practices in Psychological Science 1 (1): 27–42. https://doi.org/10.1177/2515245917745629.\n\n\nRohrer, Julia M., Paul Hünermund, Ruben C. Arslan, and Malte Elson. 2021. “That’s a Lot to Process! Pitfalls of Popular Path Models.” PsyArXiv. https://doi.org/10.31234/osf.io/paeb7.\n\n\nSimonsohn, Uri. 2022. “[103] Mediation Analysis Is Counterintuitively Invalid.” Data Colada. http://datacolada.org/103.\n\n\nThoemmes, Felix. 2015. “Reversing Arrows in Mediation Models Does Not Distinguish Plausible Models.” Basic and Applied Social Psychology 37 (4): 226–34. https://doi.org/10.1080/01973533.2015.1049351."
   }
 ]
